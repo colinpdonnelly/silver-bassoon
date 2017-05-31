@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{item.item_name}}</title>
+</head>
+<body>
+    <div id="top">
+      <a href="{% url 'beltapp:index' %}">Home</a> |
+      <a href="{% url 'loginreg:logout' %}">Logout</a>
+    </div>
+    <div id="item">
+      <h2>{{item.item_name}}</h2>
+      <h4>Users who added this product/item under their wish list</h4>
+      <p>{{item.creator.full_name}}</p>
+      {% for user in item.adders.all %}
+          <p>{{user.full_name}}</p>
+      {% endfor %}
+    </div>
+</body>
+</html>

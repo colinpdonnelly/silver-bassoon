@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Delete</title>
+</head>
+<body>
+  <div id="top">
+    <a href="{% url 'loginreg:logout' %}">Logout</a>
+  </div>
+  <h3>Are you sure you want to delete the following item?</h3>
+    <p>Item: {{item.item_name}}</p>
+    <p>Added by: {{item.creator.full_name}}</p>
+    <p>Date Added: {{item.created_at}}</p>
+  <form class="" action="{% url 'beltapp:index' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" name="no" value="No">
+  </form>
+  <form action="{% url 'beltapp:destroy' item_id=item.id %}" method='POST'>
+    {% csrf_token %}
+    <input type="submit" name="yes" value="Yes! I want to delete this">
+  </form>
+</body>
+</html>

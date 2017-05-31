@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+</head>
+<body>
+  <div id='new_user'>
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    <form action="{% url 'loginreg:register' %}" method = "POST">
+    <fieldset style="width:0px">
+        <legend>Register</legend>
+      {% csrf_token %}
+      <label for= "full_name"> Name: </label>
+      <input type="text" name="full_name" value=""><br />
+      <label for= "username"> Username: </label>
+      <input type="text" name="username" value=""><br />
+      <label for= "password"> Password: </label>
+      <input type="password" name = "password"><br />
+      <label for= "confirm_password"> Confirm PW: </label>
+      <input type="password" name = "confirm_password"><br />
+      <label for= "date_hired"> Date Hired: </label>
+      <input type="date" name="date_hired" value="">
+      <input type="submit" value="Register">
+    </fieldset>
+    </form>
+  </div>
+  <div id='returning_user'>
+    <form action="{% url 'loginreg:login' %}" method = "POST">
+    <fieldset style="width:0px">
+        <legend>Login</legend>
+      {% csrf_token %}
+      <label for= "username"> Username: </label>
+      <input type="text" name="username" value=""><br />
+      <label for= "password"> Password: </label>
+      <input type="password" name = "password">
+      <input type="submit" value="Login">
+    </fieldset>
+    </form>
+  </div>
+</body>
+</html>
